@@ -1,0 +1,46 @@
+<header 
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [class.bg-white/80]="scrolled() || menuOpen()"
+  [class.backdrop-blur-sm]="scrolled() || menuOpen()">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center h-20">
+      <a href="#hero" (click)="scrollToSection($event, '#hero')" class="relative z-50 text-2xl font-bold font-poppins text-black hover:opacity-80 transition-opacity">AI HANDS-ON</a>
+
+      <button (click)="toggleMenu()" class="relative z-50 text-black focus:outline-none md:hidden">
+        <div class="w-8 h-8 flex flex-col justify-around items-center">
+          <span class="block w-full h-0.5 bg-black transition-transform duration-300" [class.rotate-45]="menuOpen()" [class.translate-y-[9px]]="menuOpen()"></span>
+          <span class="block w-full h-0.5 bg-black transition-opacity duration-300" [class.opacity-0]="menuOpen()"></span>
+          <span class="block w-full h-0.5 bg-black transition-transform duration-300" [class.-rotate-45]="menuOpen()" [class.-translate-y-[9px]]="menuOpen()"></span>
+        </div>
+      </button>
+      
+      <nav class="hidden md:flex space-x-4 lg:space-x-6 text-sm font-bold items-center text-gray-800">
+        <a href="#outcomes" (click)="scrollToSection($event, '#outcomes')" class="hover:gradient-text transition-all">EXPECTED OUTCOMES</a>
+        <a href="#purpose" (click)="scrollToSection($event, '#purpose')" class="hover:gradient-text transition-all">PURPOSE</a>
+        <a href="#program" (click)="scrollToSection($event, '#program')" class="hover:gradient-text transition-all">PROGRAM</a>
+        <a href="#target-audience" (click)="scrollToSection($event, '#target-audience')" class="hover:gradient-text transition-all">FOR WHOM</a>
+        <a href="#mentors" (click)="scrollToSection($event, '#mentors')" class="hover:gradient-text transition-all">MENTORS</a>
+        <a href="#faq" (click)="scrollToSection($event, '#faq')" class="hover:gradient-text transition-all">FAQ</a>
+        <a href="#details" (click)="scrollToSection($event, '#details')" class="bg-pink-600 text-white font-bold py-2 px-5 rounded-full hover:bg-pink-700 transition-colors">
+          開催要項
+        </a>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- Fullscreen Mobile Menu -->
+  @if (menuOpen()) {
+    <div class="fixed inset-0 bg-white/95 backdrop-blur-sm flex flex-col justify-center items-center md:hidden z-40">
+      <nav class="text-center text-black">
+        <a href="#outcomes" (click)="scrollToSection($event, '#outcomes')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">EXPECTED OUTCOMES</a>
+        <a href="#purpose" (click)="scrollToSection($event, '#purpose')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">PURPOSE</a>
+        <a href="#program" (click)="scrollToSection($event, '#program')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">PROGRAM</a>
+        <a href="#target-audience" (click)="scrollToSection($event, '#target-audience')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">FOR WHOM</a>
+        <a href="#mentors" (click)="scrollToSection($event, '#mentors')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">MENTORS</a>
+        <a href="#details" (click)="scrollToSection($event, '#details')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">DETAILS</a>
+        <a href="#faq" (click)="scrollToSection($event, '#faq')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors">FAQ</a>
+      </nav>
+    </div>
+  }
+</header>

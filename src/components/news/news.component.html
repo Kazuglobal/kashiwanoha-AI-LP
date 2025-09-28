@@ -1,0 +1,39 @@
+<section id="news" class="py-16 md:py-24 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 appScrollAnimation class="font-poppins font-black text-3xl md:text-5xl text-center mb-12">
+      <span class="gradient-text">NEWS</span><br>
+      <span class="text-2xl md:text-4xl text-black">ニュース・プレスリリース</span>
+    </h2>
+
+    <div appScrollAnimation class="bg-white rounded-lg p-4 md:p-8 border border-gray-200">
+      @for (item of newsItems(); track item.title; let i = $index) {
+        <div class="p-4 border-b border-gray-200 last:border-b-0 hover:bg-gray-100 transition-colors rounded-md">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 flex-grow min-w-0">
+              <p class="text-gray-500 flex-shrink-0">{{ item.date }}</p>
+              <span class="text-xs font-bold py-1 px-3 rounded-full bg-pink-100 text-pink-800 w-fit">{{ item.category }}</span>
+              <a href="#" class="text-gray-900 font-semibold hover:underline truncate" title="{{ item.title }}">
+                {{ item.title }}
+              </a>
+            </div>
+
+            <div class="flex items-center space-x-3 flex-shrink-0 self-end md:self-center">
+              <a href="https://twitter.com/intent/tweet?url=about:blank" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-black transition-colors" title="Share on X">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=about:blank" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-black transition-colors" title="Share on Facebook">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.59 0 0 .59 0 1.325v21.35C0 23.41.59 24 1.325 24H12.82v-9.29h-3.128V11.16h3.128V8.625c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.55h-3.12V24h5.713c.734 0 1.325-.59 1.325-1.325V1.325C24 .59 23.409 0 22.675 0z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <div appScrollAnimation class="text-center mt-12">
+      <a href="#" class="bg-pink-600 text-white font-bold py-3 px-8 rounded-full hover:bg-pink-700 transition-colors duration-300">
+        NEWS LIST &gt;
+      </a>
+    </div>
+  </div>
+</section>

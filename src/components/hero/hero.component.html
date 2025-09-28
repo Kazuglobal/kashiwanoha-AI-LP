@@ -1,0 +1,55 @@
+<section id="hero" class="relative h-screen min-h-[700px] flex flex-col overflow-hidden">
+  
+  <div class="absolute inset-0 bg-cover bg-center z-0" 
+       style="background-image: url('https://picsum.photos/seed/ai-workshop/1920/1080'); will-change: transform;"
+       [style.transform]="'translateY(' + parallaxOffset() + 'px) scale(1.1)'">
+  </div>
+
+  <div class="absolute inset-0 bg-white/40 z-10"></div>
+  
+  <div class="relative z-20 flex-grow flex flex-col items-center justify-center text-center text-black px-4">
+    <h1 class="font-black text-5xl md:text-7xl lg:text-8xl drop-shadow-lg font-poppins leading-none">
+        <span class="block text-3xl md:text-5xl lg:text-6xl text-gray-800">君の</span>
+        <span class="gradient-text block my-1 md:my-2">「学び」</span>
+        <span class="block text-3xl md:text-5xl lg:text-6xl text-gray-800">をデザインしよう</span>
+    </h1>
+    <p class="max-w-2xl text-gray-700 text-base md:text-lg mt-8">
+      中高生向けAIハンズオンワークショップ。自分だけの学習アプリを開発し、未来のスキルを手に入れよう。
+    </p>
+  </div>
+  <div class="relative z-20 p-8 flex justify-between items-end">
+    <a href="#outcomes" class="text-black text-center animate-bounce">
+      <span class="font-bold tracking-widest">SCROLL</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </a>
+    <button 
+      (click)="apply()"
+      [disabled]="applicationStatus() === 'loading'"
+      class="bg-pink-600 text-white font-bold py-3 px-8 rounded-full hover:bg-pink-700 transition-all duration-300 w-48 text-center"
+      [class.animate-pulse-scale]="applicationStatus() === 'idle'"
+      [class.cursor-not-allowed]="applicationStatus() === 'loading'"
+      [class.opacity-75]="applicationStatus() === 'loading'"
+      [class.bg-green-500]="applicationStatus() === 'success'"
+      [class.text-white]="applicationStatus() === 'success'">
+      @switch (applicationStatus()) {
+        @case ('idle') {
+          <span>参加申し込み &gt;</span>
+        }
+        @case ('loading') {
+          <div class="flex items-center justify-center">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>処理中...</span>
+          </div>
+        }
+        @case ('success') {
+          <span>申し込み完了!</span>
+        }
+      }
+    </button>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+{
+  "name": "Tokyo Game Show 2025",
+  "description": "A visually stunning and interactive landing page for the Tokyo Game Show 2025 event, built with Angular and Tailwind CSS. It features a dynamic header, hero section, carousels, and scroll-triggered animations.",
+  "requestFramePermissions": []
+}

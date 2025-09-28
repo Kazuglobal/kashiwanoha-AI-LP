@@ -1,0 +1,28 @@
+<section id="program" class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+        <h2 appScrollAnimation class="font-poppins font-black text-3xl md:text-5xl">
+          <span class="gradient-text">PROGRAM</span><br>
+          <span class="text-2xl md:text-4xl text-black">プログラム内容 (4時間の流れ)</span>
+        </h2>
+    </div>
+    <div class="max-w-3xl mx-auto">
+        <div class="relative">
+            <!-- Vertical line -->
+            <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
+
+            @for (item of programSteps(); track item.title; let i = $index) {
+              <div appScrollAnimation [staggerIndex]="i" class="relative pl-12 mb-12 last:mb-0">
+                  <div class="absolute left-0 top-1 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center ring-4 ring-white">
+                    <span class="font-bold text-gray-800">{{ i + 1 }}</span>
+                  </div>
+                  <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="font-bold text-xl text-gray-900">{{ item.title }}</h3>
+                    <p class="mt-2 text-gray-600">{{ item.description }}</p>
+                  </div>
+              </div>
+            }
+        </div>
+    </div>
+  </div>
+</section>
