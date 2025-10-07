@@ -1,0 +1,203 @@
+<!-- モーダル開くボタン（他のコンポーネントから呼び出す用） -->
+<!-- モーダルオーバーレイ -->
+@if (isOpen()) {
+  <div class="fixed inset-0 z-50 overflow-y-auto" (click)="closeModal()">
+    <div class="flex min-h-screen items-center justify-center p-4">
+      <!-- モーダル背景 -->
+      <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+
+      <!-- モーダルコンテンツ -->
+      <div class="relative bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 md:p-8" (click)="$event.stopPropagation()">
+        <!-- 閉じるボタン -->
+        <button 
+          (click)="closeModal()"
+          class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          aria-label="閉じる">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <!-- タイトル -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 font-poppins">
+          <span class="gradient-text">参加申し込み</span>
+        </h2>
+
+        <!-- 成功メッセージ -->
+        @if (applicationStatus() === 'success') {
+          <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <p class="text-green-700 font-medium">申し込みが完了しました！ご登録いただいたメールアドレスに確認メールをお送りします。</p>
+            </div>
+          </div>
+        }
+
+        <!-- エラーメッセージ -->
+        @if (errorMessage()) {
+          <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <p class="text-red-700 font-medium">{{ errorMessage() }}</p>
+            </div>
+          </div>
+        }
+
+        <!-- フォーム -->
+        <form (ngSubmit)="submitForm()" class="space-y-4">
+          <!-- 名前 -->
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+              お名前 <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              [value]="formData().name"
+              (input)="updateField('name', $any($event.target).value)"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="山田 太郎">
+          </div>
+
+          <!-- ふりがな -->
+          <div>
+            <label for="furigana" class="block text-sm font-medium text-gray-700 mb-1">
+              ふりがな <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="furigana"
+              [value]="formData().furigana"
+              (input)="updateField('furigana', $any($event.target).value)"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="やまだ たろう">
+          </div>
+
+          <!-- メールアドレス -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+              メールアドレス <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              [value]="formData().email"
+              (input)="updateField('email', $any($event.target).value)"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="example@example.com">
+          </div>
+
+          <!-- 電話番号 -->
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+              電話番号 <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              [value]="formData().phone"
+              (input)="updateField('phone', $any($event.target).value)"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="090-1234-5678">
+          </div>
+
+          <!-- 学校名 -->
+          <div>
+            <label for="school_name" class="block text-sm font-medium text-gray-700 mb-1">
+              学校名
+            </label>
+            <input
+              type="text"
+              id="school_name"
+              [value]="formData().school_name"
+              (input)="updateField('school_name', $any($event.target).value)"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="〇〇中学校 / 〇〇高等学校">
+          </div>
+
+          <!-- 学年 -->
+          <div>
+            <label for="grade" class="block text-sm font-medium text-gray-700 mb-1">
+              学年 <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="grade"
+              [value]="formData().grade"
+              (change)="updateField('grade', $any($event.target).value)"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              <option value="">選択してください</option>
+              <option value="中学1年生">中学1年生</option>
+              <option value="中学2年生">中学2年生</option>
+              <option value="中学3年生">中学3年生</option>
+              <option value="高校1年生">高校1年生</option>
+              <option value="高校2年生">高校2年生</option>
+              <option value="高校3年生">高校3年生</option>
+            </select>
+          </div>
+
+          <!-- 参加動機 -->
+          <div>
+            <label for="motivation" class="block text-sm font-medium text-gray-700 mb-1">
+              参加したい理由や期待すること
+            </label>
+            <textarea
+              id="motivation"
+              [value]="formData().motivation"
+              (input)="updateField('motivation', $any($event.target).value)"
+              rows="4"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              placeholder="このワークショップに参加したい理由や、学びたいことを自由にお書きください。"></textarea>
+          </div>
+
+          <!-- 送信ボタン -->
+          <div class="flex gap-4 pt-4">
+            <button
+              type="button"
+              (click)="closeModal()"
+              [disabled]="applicationStatus() === 'loading'"
+              class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+              キャンセル
+            </button>
+            <button
+              type="submit"
+              [disabled]="applicationStatus() === 'loading' || applicationStatus() === 'success'"
+              class="flex-1 bg-pink-600 text-white font-bold py-3 px-6 rounded-full hover:bg-pink-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+              @if (applicationStatus() === 'loading') {
+                <div class="flex items-center justify-center">
+                  <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span>送信中...</span>
+                </div>
+              } @else if (applicationStatus() === 'success') {
+                <span>✓ 送信完了</span>
+              } @else {
+                <span>申し込む</span>
+              }
+            </button>
+          </div>
+        </form>
+
+        <!-- 注意事項 -->
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+          <p class="text-xs text-gray-600">
+            <strong>個人情報の取り扱いについて：</strong>
+            ご入力いただいた個人情報は、本ワークショップの運営および連絡のためにのみ使用し、適切に管理いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+

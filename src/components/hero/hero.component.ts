@@ -1,16 +1,16 @@
-import { Component, ChangeDetectionStrategy, signal, afterNextRender, inject } from '@angular/core';
-import { ApplicationService } from '../../services/application.service';
+import { Component, ChangeDetectionStrategy, signal, afterNextRender, viewChild } from '@angular/core';
+import { ApplicationFormComponent } from '../application-form/application-form.component';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  imports: [ApplicationFormComponent],
 })
 export class HeroComponent {
   parallaxOffset = signal(0);
-  private applicationService = inject(ApplicationService);
-  applicationStatus = signal<'idle' | 'loading' | 'success'>('idle');
+  applicationForm = viewChild<ApplicationFormComponent>('applicationForm');
 
   constructor() {
     afterNextRender(() => {
@@ -25,17 +25,7 @@ export class HeroComponent {
     });
   }
 
-  async apply(): Promise<void> {
-    if (this.applicationStatus() === 'loading') return;
-    
-    this.applicationStatus.set('loading');
-    try {
-      await this.applicationService.submitApplication();
-      this.applicationStatus.set('success');
-      setTimeout(() => this.applicationStatus.set('idle'), 3000);
-    } catch (error) {
-      console.error('Application failed', error);
-      this.applicationStatus.set('idle'); // reset on error
-    }
+  openApplicationForm(): void {
+    this.applicationForm()?.openModal();
   }
 }

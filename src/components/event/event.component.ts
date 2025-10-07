@@ -17,7 +17,7 @@ export class EventComponent {
   programSteps = signal<ProgramStep[]>([
     {
       title: 'オリエンテーション',
-      description: 'ワークショップの目的を共有し、AIで作られた面白いアプリの事例を紹介します。'
+      description: 'ワークショップの目的を共有し、AIの使い方の基礎を学びます。'
     },
     {
       title: 'アイデアワークショップ',
@@ -25,11 +25,11 @@ export class EventComponent {
     },
     {
       title: 'パーソナライズスタディアプリ開発体験',
-      description: '専門家のサポートを受けながら、考えたアイデアを基に、実際にアプリのプロトタイプを作成します。'
+      description: 'メンターのサポートを受けながら、考えたアイデアを基に、実際にアプリのプロトタイプを作成します。'
     },
     {
       title: '成果発表・フィードバック',
-      description: '作った作品を皆の前で発表し、専門家から具体的なアドバイスや次のステップへのヒントをもらいます。'
+      description: '作った作品を皆の前で発表し、発信する力を養います。'
     }
   ]);
 }
