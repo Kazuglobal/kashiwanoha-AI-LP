@@ -1,0 +1,12 @@
+{
+  "recipient": "globalbunny77@gmail.com",
+  "name": "Test User",
+  "furigana": "テスト ユーザー",
+  "email": "test@example.com",
+  "phone": "090-0000-0000",
+  "school_name": "テスト校",
+  "grade": "中学1年",
+  "motivation": "楽しく学びたい",
+  "submittedAt": "2025-10-07T12:34:56.000Z",
+  "source": "local-test"
+}

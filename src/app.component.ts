@@ -14,7 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-header></app-header>
-    <main>
+    <main class="pt-20">
       <router-outlet></router-outlet>
     </main>
     <app-footer></app-footer>

@@ -1,43 +1,64 @@
 {
-  "hash": "32a9cefd",
-  "configHash": "1adb63ff",
-  "lockfileHash": "bba0c4a5",
-  "browserHash": "d7aa92bb",
+  "hash": "4829745c",
+  "configHash": "a8657c4e",
+  "lockfileHash": "867f7197",
+  "browserHash": "859b38e9",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "7758979e",
+      "fileHash": "9be8a3f7",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "867bb5cb",
+      "fileHash": "0c6a57c3",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "62c25865",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "90261509",
+      "fileHash": "ae221698",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "cd33b38e",
+      "fileHash": "e6de0b91",
+      "needsInterop": false
+    },
+    "@supabase/supabase-js": {
+      "src": "../../../../../../node_modules/@supabase/supabase-js/dist/module/index.js",
+      "file": "@supabase_supabase-js.js",
+      "fileHash": "744df74c",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-TNWNIWNE": {
-      "file": "chunk-TNWNIWNE.js"
+    "chunk-FYOPU5DR": {
+      "file": "chunk-FYOPU5DR.js"
     },
-    "chunk-ZYI3A3AN": {
-      "file": "chunk-ZYI3A3AN.js"
+    "chunk-FAQ5HCCC": {
+      "file": "chunk-FAQ5HCCC.js"
     },
-    "chunk-RO37OISA": {
-      "file": "chunk-RO37OISA.js"
+    "chunk-R24S2X6J": {
+      "file": "chunk-R24S2X6J.js"
+    },
+    "browser-G56TEEFR": {
+      "file": "browser-G56TEEFR.js"
+    },
+    "chunk-4YQDALOD": {
+      "file": "chunk-4YQDALOD.js"
+    },
+    "chunk-R327OCYJ": {
+      "file": "chunk-R327OCYJ.js"
     }
   }
 }

@@ -1,15 +1,17 @@
 <header 
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/50 text-white"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/70 backdrop-blur-md border-b border-white/10 shadow-lg"
   [class.bg-white/95]="scrolled() || menuOpen()"
   [class.text-gray-900]="scrolled() || menuOpen()"
-  [class.backdrop-blur-md]="true">
-  <div class="container mx-auto px-4">
+  [class.text-white]="!scrolled() && !menuOpen()"
+  [class.border-transparent]="!scrolled() && !menuOpen()"
+  [class.shadow-none]="!scrolled() && !menuOpen()">
+  <div class="container mx-auto px-4" [class.pointer-events-none]="menuOpen()">
     <div class="flex justify-between items-center h-20">
-      <a href="#hero" (click)="scrollToSection($event, '#hero')" class="relative z-50 text-2xl font-bold font-poppins transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 rounded-md px-2 py-1"
+      <a href="#hero" (click)="scrollToSection($event, '#hero')" class="relative z-50 text-2xl font-bold font-poppins transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 rounded-md px-2 py-1" [class.invisible]="menuOpen()"
          [class.text-white]="!scrolled() && !menuOpen()"
          [class.focus:ring-offset-gray-900]="!scrolled() && !menuOpen()">AI HANDS-ON</a>
 
-      <button (click)="toggleMenu()" class="relative z-50 md:hidden focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 rounded-full" aria-label="メニューを開く" [attr.aria-expanded]="menuOpen()">
+      <button (click)="toggleMenu()" class="relative z-[10000] md:hidden focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 rounded-full" aria-label="メニューを開く" [attr.aria-expanded]="menuOpen()">
         <div class="flex h-12 w-12 flex-col items-center justify-center gap-2 rounded-full bg-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] ring-1 ring-black/10 transition-all duration-300 text-gray-900">
           <span class="block h-0.5 w-6 rounded-full bg-current transition-all duration-300"
                 [class.rotate-45]="menuOpen()" [class.translate-y-2]="menuOpen()"></span>
@@ -19,7 +21,7 @@
         </div>
       </button>
       
-      <nav class="hidden md:flex space-x-4 lg:space-x-6 text-sm font-bold items-center"
+      <nav class="hidden md:flex space-x-4 lg:space-x-6 text-sm font-bold items-center" [class.invisible]="menuOpen()"
            [class.text-white]="!scrolled() && !menuOpen()">
         <a href="#outcomes" (click)="scrollToSection($event, '#outcomes')" class="hover:gradient-text transition-all focus:outline-none focus:ring-2 focus:ring-pink-500 rounded px-2 py-1">成果とベネフィット</a>
         <a href="#purpose" (click)="scrollToSection($event, '#purpose')" class="hover:gradient-text transition-all focus:outline-none focus:ring-2 focus:ring-pink-500 rounded px-2 py-1">開催目的</a>
@@ -37,8 +39,12 @@
 
   <!-- Fullscreen Mobile Menu -->
   @if (menuOpen()) {
-    <div class="fixed inset-0 bg-white/95 backdrop-blur-sm flex flex-col justify-center items-center md:hidden z-40">
-      <nav class="text-center text-black">
+    <div class="fixed inset-0 bg-white/80 backdrop-blur-md md:hidden z-[9999]">
+      <!-- background layer for readability -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/20"></div>
+      <!-- menu panel -->
+      <div class="relative h-full w-full flex items-center justify-center p-6">
+        <nav class="w-full max-w-sm text-center text-gray-900 bg-white/90 rounded-2xl shadow-2xl ring-1 ring-black/10 px-6 py-4 space-y-1">
         <a href="#outcomes" (click)="scrollToSection($event, '#outcomes')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">成果とベネフィット</a>
         <a href="#purpose" (click)="scrollToSection($event, '#purpose')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">開催目的</a>
         <a href="#program" (click)="scrollToSection($event, '#program')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">プログラム</a>
@@ -46,7 +52,10 @@
         <a href="#mentors" (click)="scrollToSection($event, '#mentors')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">メンター</a>
         <a href="#details" (click)="scrollToSection($event, '#details')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">開催情報</a>
         <a href="#faq" (click)="scrollToSection($event, '#faq')" class="block py-4 text-2xl font-bold hover:gradient-text transition-colors focus:outline-none focus:ring-2 focus:ring-pink-500 rounded mx-4">FAQ</a>
-      </nav>
+        </nav>
+      </div>
     </div>
   }
 </header>
+
+

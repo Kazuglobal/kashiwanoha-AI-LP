@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git reset:*)",
+      "Bash(git push:*)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "Bash(curl:*)",
+      "Bash(npx:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npm install:*)",
+      "Bash(mcp-server-supabase:*)",
+      "Bash(SUPABASE_URL=https://coypokcshsoawzvhuhxf.supabase.co SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNveXBva2NzaHNvYXd6dmh1aHhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwMzY5OTEsImV4cCI6MjA2MjYxMjk5MX0.UiY530NPh1E_H_CaxrSkaW_FJB6X0kDWWL5Dk9zscFU mcp-server-supabase)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
