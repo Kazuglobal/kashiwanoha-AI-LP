@@ -1,4 +1,4 @@
-<section id="hero" class="relative h-screen min-h-[700px] flex flex-col overflow-hidden">
+<section id="hero" class="relative min-h-screen flex flex-col overflow-hidden">
   
   <div class="absolute inset-0 bg-cover bg-center z-0" 
        style="background-image: url('/hero-fv.jpg'); will-change: transform;"
@@ -7,17 +7,30 @@
 
   <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-white/40 to-white/50 z-10"></div>
   
-  <div class="relative z-20 flex-grow flex flex-col items-center justify-center text-center text-black px-4">
+  <div class="relative z-20 flex-1 flex flex-col items-center justify-center text-center text-black px-4 pt-24 md:pt-32 gap-6">
     <h1 class="font-black text-5xl md:text-7xl lg:text-8xl drop-shadow-lg font-poppins leading-none">
         <span class="block text-3xl md:text-5xl lg:text-6xl text-gray-800">君の</span>
         <span class="gradient-text block my-1 md:my-2">「学び」</span>
         <span class="block text-3xl md:text-5xl lg:text-6xl text-gray-800">をデザインしよう</span>
     </h1>
-    <p class="max-w-2xl text-gray-700 text-base md:text-lg mt-8">
+    <p class="max-w-2xl text-gray-700 text-base md:text-lg md:text-xl leading-relaxed">
       中高生向けAIハンズオンワークショップ。自分だけの学習アプリを開発し、将来役立つスキルを手に入れよう。
     </p>
+    
   </div>
-  <div class="relative z-20 p-4 md:p-8 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end gap-4">
+  <!-- ワークショップ画像 -->
+  <div class="relative z-20 w-full mt-10 flex-shrink-0">
+    <div class="relative w-full max-w-6xl mx-auto px-4">
+      <img 
+        src="/public/workshop-banner.png" 
+        alt="中高生向けAIハンズオンワークショップ - 君の学びをデザインしよう"
+        class="w-full h-auto rounded-xl shadow-2xl border-4 border-white/60 hover:scale-105 transition-all duration-500 hover:shadow-3xl"
+        loading="eager"
+        style="max-height: 80vh; object-fit: contain;"
+      />
+    </div>
+  </div>
+  <div class="relative z-20 mt-12 p-4 md:p-8 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end gap-4">
     <a href="#outcomes" class="text-black text-center animate-bounce hidden md:block focus:outline-none focus:ring-2 focus:ring-pink-500 rounded px-2">
       <span class="font-bold tracking-widest">SCROLL</span>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

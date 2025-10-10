@@ -1,0 +1,33 @@
+{
+  "name": "kashiwanoha-workshop-tools",
+  "displayName": "Kashiwanoha AI Workshop Tools",
+  "version": "1.0.0",
+  "description": "Development tools for the Kashiwanoha AI Workshop landing page - Angular components, Supabase integration, and deployment helpers",
+  "author": "Kazuglobal",
+  "repository": "https://github.com/Kazuglobal/kashiwanoha-AI-LP",
+  "commands": [
+    {
+      "name": "add-component",
+      "description": "Create a new Angular component with proper structure"
+    },
+    {
+      "name": "supabase-query",
+      "description": "Generate Supabase queries for workshop_applications table"
+    },
+    {
+      "name": "build-deploy",
+      "description": "Build and check the Angular app for deployment"
+    },
+    {
+      "name": "add-form-field",
+      "description": "Add a new field to the workshop application form"
+    },
+    {
+      "name": "check-supabase",
+      "description": "Check Supabase connection and database status"
+    }
+  ],
+  "agents": [],
+  "mcpServers": [],
+  "hooks": []
+}
