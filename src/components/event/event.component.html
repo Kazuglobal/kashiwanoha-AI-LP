@@ -1,28 +1,85 @@
-<section id="program" class="py-16 md:py-24 bg-white">
+<section id="program" class="workshop-process py-16 md:py-24 bg-white">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-        <h2 appScrollAnimation class="font-poppins font-black text-3xl md:text-5xl">
-          <span class="gradient-text">PROGRAM</span><br>
-          <span class="text-2xl md:text-4xl text-black">プログラム内容 (4時間の流れ)</span>
-        </h2>
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <h2 appScrollAnimation class="font-poppins font-black text-3xl md:text-5xl">
+        <span class="gradient-text">PROGRAM</span><br>
+        <span class="text-2xl md:text-4xl text-black">ワークショップの流れ</span>
+      </h2>
+      <p class="mt-4 text-gray-600 text-sm md:text-base">
+        学習の旅を4つのステップで体験。オリエンテーションから成果発表まで、立体的な成長の階段として可視化しています。
+      </p>
     </div>
-    <div class="max-w-3xl mx-auto">
-        <div class="relative">
-            <!-- Vertical line -->
-            <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
 
-            @for (item of programSteps(); track item.title; let i = $index) {
-              <div appScrollAnimation [staggerIndex]="i" class="relative pl-12 mb-12 last:mb-0">
-                  <div class="absolute left-0 top-1 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center ring-4 ring-white">
-                    <span class="font-bold text-gray-800">{{ i + 1 }}</span>
+    <ol class="steps-grid" role="list">
+      @for (step of programSteps(); track step.id; let index = $index; let last = $last) {
+        @let next = !last ? programSteps()[index + 1] : null;
+        <li
+          appScrollAnimation
+          [staggerIndex]="index"
+          class="step-card"
+          role="listitem"
+          [attr.aria-label]="step.ariaLabel"
+          [style.--step-gradient-from]="step.gradientFrom"
+          [style.--step-gradient-to]="step.gradientTo"
+          [style.--step-accent]="step.accentColor"
+          [style.--arrow-start]="step.gradientTo"
+          [style.--arrow-end]="next?.gradientFrom ?? step.gradientTo"
+        >
+          <div class="step-card__inner">
+            <div class="step-card__badge" aria-hidden="true">
+              <span>{{ step.id }}</span>
+            </div>
+
+            <div class="step-card__illustration" role="img" [attr.aria-label]="step.iconLabel">
+              @switch (step.illustration) {
+                @case ('orientation') {
+                  <div class="iso map"></div>
+                  <div class="iso map-fold"></div>
+                  <div class="compass">
+                    <span class="compass-needle"></span>
                   </div>
-                  <div class="bg-gray-50 p-6 rounded-lg">
-                    <h3 class="font-bold text-xl text-gray-900">{{ item.title }}</h3>
-                    <p class="mt-2 text-gray-600">{{ item.description }}</p>
+                }
+                @case ('ideation') {
+                  <div class="iso board"></div>
+                  <span class="sticky sticky-1"></span>
+                  <span class="sticky sticky-2"></span>
+                  <span class="sticky sticky-3"></span>
+                  <span class="sticky sticky-4"></span>
+                  <span class="sticky sticky-5"></span>
+                  <div class="bulb">
+                    <span class="bulb-core"></span>
+                    <span class="bulb-ray ray-1"></span>
+                    <span class="bulb-ray ray-2"></span>
+                    <span class="bulb-ray ray-3"></span>
                   </div>
-              </div>
-            }
-        </div>
-    </div>
+                  <div class="avatar avatar-1"></div>
+                  <div class="avatar avatar-2"></div>
+                  <div class="avatar avatar-3"></div>
+                }
+                @case ('development') {
+                  <div class="iso device"></div>
+                  <div class="code-block block-1"></div>
+                  <div class="code-block block-2"></div>
+                  <div class="code-block block-3"></div>
+                  <div class="mentor-chip"></div>
+                  <div class="checkmark"></div>
+                }
+                @case ('showcase') {
+                  <div class="iso stage"></div>
+                  <div class="iso screen"></div>
+                  <div class="trophy"></div>
+                }
+              }
+            </div>
+
+            <h3 class="step-card__title">{{ step.title }}</h3>
+            <p class="step-card__description">
+              {{ step.description }}
+            </p>
+
+          </div>
+        </li>
+      }
+    </ol>
   </div>
 </section>
