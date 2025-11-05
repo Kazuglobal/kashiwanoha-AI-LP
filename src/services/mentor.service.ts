@@ -33,7 +33,7 @@ export class MentorService {
 ・教育AIサミット2025 衆議院第一会館登壇
 ・教育AIサミット実例大全 ポスターセッション発表
 ・東京AI祭2025ハッカソンセミファイナル
-・AWS Startup Loft Tokyoハッカソン 最優秀賞受賞（Supabase、Vercel、AWS Startupsの豪華企業に後援）
+・ハッカソン 最優秀賞受賞（Supabase、Vercel、AWS Startupsの豪華企業に後援）
 
 ■メディア掲載実績
 ・東奥日報（2025年9月22日）- 自作防災アプリ小学校ワークショップ
